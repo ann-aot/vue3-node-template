@@ -40,9 +40,9 @@ docker compose -f docker-compose.dev.yml up --build
 
 Open (dev):
 
-- Frontend: http://localhost:5173
-- Backend: http://localhost:3000
-- Swagger UI: http://localhost:8080
+- Frontend: http://localhost:${FRONTEND_DEV_PORT:-5173}
+- Backend: http://localhost:${BACKEND_PORT:-3000}
+- Swagger UI: http://localhost:${SWAGGER_PORT:-8080}
 
 ## Scripts
 
@@ -52,6 +52,10 @@ Open (dev):
 
 - Configure environment: `cp deployment/.env.sample deployment/.env` and update values.
 - Start: `cd deployment && docker compose up --build -d`.
+- Open (prod):
+  - Frontend: http://localhost:${FRONTEND_HTTP_PORT:-8080}
+  - Backend: http://localhost:${BACKEND_HTTP_PORT:-3000}
+  - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/docs
 
 # vue3-node-template
 Vue 3 and Node template
