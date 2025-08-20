@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>{{ msg }}</h2>
-    <button @click="count++">Count: {{ count }}</button>
+    <button class="btn" @click="count++">Count: {{ count }}</button>
     <p v-if="apiMessage">API: {{ apiMessage }}</p>
   </section>
 </template>
@@ -29,8 +29,4 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-button {
-  padding: 0.5rem 1rem;
-}
-</style>
+<style scoped></style>
