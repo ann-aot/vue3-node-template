@@ -15,8 +15,13 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm install
-      - run: npm run -ws lint
-      - run: npm run -ws build
-      - run: npm run -ws test
+      - run: npm ci
+      - name: Lint
+        run: npm run -ws lint
+      - name: Typecheck
+        run: npm run -ws typecheck
+      - name: Build
+        run: npm run -ws build
+      - name: Test
+        run: npm run -ws test
 

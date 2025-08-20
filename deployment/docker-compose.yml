@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: app-db
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-appdb}
+      - POSTGRES_USER=${POSTGRES_USER:-appuser}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-apppass}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: app-backend
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=${DATABASE_URL:-postgresql://appuser:apppass@db:5432/appdb}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: app-frontend
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL:-http://backend:3000}
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  db_data:
+
+networks:
+  default:
+    name: app-network
+
