@@ -29,15 +29,16 @@ npm run --workspace backend dev
 npm run --workspace frontend dev
 ```
 
-Or with Docker Compose:
+Or with Docker Compose (dev):
 
 ```bash
 # copy env
 cp .env.sample .env
-docker compose up --build
+cd deployment
+docker compose -f docker-compose.dev.yml up --build
 ```
 
-Open:
+Open (dev):
 
 - Frontend: http://localhost:5173
 - Backend: http://localhost:3000
@@ -47,7 +48,7 @@ Open:
 
 - `npm run -ws build|dev|lint|format|test|typecheck` runs across workspaces.
 
-## Deployment
+## Deployment (prod)
 
 - Configure environment: `cp deployment/.env.sample deployment/.env` and update values.
 - Start: `cd deployment && docker compose up --build -d`.
