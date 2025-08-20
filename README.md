@@ -6,7 +6,7 @@ This monorepo provides a production-grade setup with Vue 3 + Vite frontend and E
 
 - Frontend: Vue 3, Vite, TypeScript, Vitest, ESLint + Prettier
 - Backend: Express, TypeScript, Zod validation, Vitest + Supertest
-- Swagger/OpenAPI: served by backend at `/swagger`
+- Swagger/OpenAPI: served by backend at `/docs`
 - Docker: Dev and Prod Dockerfiles, docker-compose for local dev
 - Linting/Formatting: ESLint + Prettier pre-commit hook (Husky)
 - CI: GitHub Actions to lint, build, and test
@@ -29,33 +29,33 @@ npm run --workspace backend dev
 npm run --workspace frontend dev
 ```
 
-Or with Docker Compose (dev):
+Or with Docker Compose (local):
 
 ```bash
 # copy env
 cp .env.sample .env
 cd deployment
-docker compose -f docker-compose.dev.yml up --build
+docker compose up --build
 ```
 
-Open (dev):
+Open (local):
 
 - Frontend: http://localhost:${FRONTEND_DEV_PORT:-5173}
 - Backend: http://localhost:${BACKEND_PORT:-3000}
-- Swagger UI: http://localhost:${BACKEND_PORT:-3000}/swagger
+- Swagger UI: http://localhost:${BACKEND_PORT:-3000}/docs
 
 ## Scripts
 
 - `npm run -ws build|dev|lint|format|test|typecheck` runs across workspaces.
 
-## Deployment (prod)
+## Deployment
 
 - Configure environment: `cp deployment/.env.sample deployment/.env` and update values.
-- Start: `cd deployment && docker compose up --build -d`.
-- Open (prod):
+- Start locally: `cd deployment && docker compose up --build -d`.
+- Open:
   - Frontend: http://localhost:${FRONTEND_HTTP_PORT:-8080}
   - Backend: http://localhost:${BACKEND_HTTP_PORT:-3000}
-  - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/swagger
+  - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/docs
 
 # vue3-node-template
 Vue 3 and Node template

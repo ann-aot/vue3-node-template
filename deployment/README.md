@@ -1,9 +1,9 @@
 # Deployment
 
-This folder contains docker-compose files that run:
+This folder contains a docker-compose file that runs:
 
 - frontend (Nginx serving built assets)
-- backend (Node.js Express app; serves Swagger UI at `/swagger`)
+- backend (Node.js Express app; serves Swagger UI at `/docs`)
 - db (Postgres)
 
 ## Usage
@@ -19,7 +19,7 @@ Services:
 
 - Frontend: http://localhost:${FRONTEND_HTTP_PORT:-8080}
 - Backend: http://localhost:${BACKEND_HTTP_PORT:-3000}
-- Swagger: http://localhost:${BACKEND_HTTP_PORT:-3000}/swagger
+- Swagger: http://localhost:${BACKEND_HTTP_PORT:-3000}/docs
 - Postgres: localhost:${POSTGRES_HOST_PORT:-5432}
 
 Environment variables (with defaults):
@@ -29,4 +29,3 @@ Environment variables (with defaults):
 - POSTGRES_PASSWORD (default: apppass)
 - DATABASE_URL (default: postgresql://appuser:apppass@db:5432/appdb)
 - VITE_API_BASE_URL (default: http://backend:3000)
-

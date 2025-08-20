@@ -18,7 +18,7 @@ app.use('/health', healthRouter);
 app.use('/api', exampleRouter);
 
 const swaggerDocument = YAML.load(__dirname + '/openapi.yaml');
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Not Found' });
