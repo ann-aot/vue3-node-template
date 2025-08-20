@@ -6,7 +6,7 @@ This monorepo provides a production-grade setup with Vue 3 + Vite frontend and E
 
 - Frontend: Vue 3, Vite, TypeScript, Vitest, ESLint + Prettier
 - Backend: Express, TypeScript, Zod validation, Vitest + Supertest
-- Swagger/OpenAPI: served at `/docs` and via swagger-ui container
+- Swagger/OpenAPI: served by backend at `/swagger`
 - Docker: Dev and Prod Dockerfiles, docker-compose for local dev
 - Linting/Formatting: ESLint + Prettier pre-commit hook (Husky)
 - CI: GitHub Actions to lint, build, and test
@@ -42,7 +42,7 @@ Open (dev):
 
 - Frontend: http://localhost:${FRONTEND_DEV_PORT:-5173}
 - Backend: http://localhost:${BACKEND_PORT:-3000}
-- Swagger UI: http://localhost:${SWAGGER_PORT:-8080}
+- Swagger UI: http://localhost:${BACKEND_PORT:-3000}/swagger
 
 ## Scripts
 
@@ -55,7 +55,7 @@ Open (dev):
 - Open (prod):
   - Frontend: http://localhost:${FRONTEND_HTTP_PORT:-8080}
   - Backend: http://localhost:${BACKEND_HTTP_PORT:-3000}
-  - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/docs
+  - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/swagger
 
 # vue3-node-template
 Vue 3 and Node template

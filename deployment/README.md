@@ -1,9 +1,9 @@
 # Deployment
 
-This folder contains a production-oriented `docker-compose.yml` that runs:
+This folder contains docker-compose files that run:
 
 - frontend (Nginx serving built assets)
-- backend (Node.js Express app)
+- backend (Node.js Express app; serves Swagger UI at `/swagger`)
 - db (Postgres)
 
 ## Usage
@@ -17,9 +17,10 @@ docker compose up --build -d
 
 Services:
 
-- Frontend: http://localhost:8080
-- Backend: http://localhost:3000
-- Postgres: localhost:5432
+- Frontend: http://localhost:${FRONTEND_HTTP_PORT:-8080}
+- Backend: http://localhost:${BACKEND_HTTP_PORT:-3000}
+- Swagger: http://localhost:${BACKEND_HTTP_PORT:-3000}/swagger
+- Postgres: localhost:${POSTGRES_HOST_PORT:-5432}
 
 Environment variables (with defaults):
 

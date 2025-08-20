@@ -16,8 +16,7 @@ services:
     volumes:
       - ../backend:/app
       - /app/node_modules
-    depends_on:
-      - swagger
+    # depends_on removed: swagger UI is now served by backend at /swagger
 
   frontend:
     env_file:
@@ -37,16 +36,7 @@ services:
     depends_on:
       - backend
 
-  swagger:
-    env_file:
-      - ../.env
-    image: swaggerapi/swagger-ui
-    environment:
-      - SWAGGER_JSON=/openapi/openapi.yaml
-    volumes:
-      - ../backend/src/openapi.yaml:/openapi/openapi.yaml:ro
-    ports:
-      - "${SWAGGER_PORT:-8080}:8080"
+  # swagger service removed; access via backend at /swagger
 
 networks:
   default:
