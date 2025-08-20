@@ -26,6 +26,8 @@ coverage/
 # Env
 .env
 .env.*
+!.env.sample
+!deployment/.env.sample
 
 # Mac/Linux
 .DS_Store

@@ -32,6 +32,8 @@ npm run --workspace frontend dev
 Or with Docker Compose:
 
 ```bash
+# copy env
+cp .env.sample .env
 docker compose up --build
 ```
 
@@ -44,6 +46,11 @@ Open:
 ## Scripts
 
 - `npm run -ws build|dev|lint|format|test|typecheck` runs across workspaces.
+
+## Deployment
+
+- Configure environment: `cp deployment/.env.sample deployment/.env` and update values.
+- Start: `cd deployment && docker compose up --build -d`.
 
 # vue3-node-template
 Vue 3 and Node template

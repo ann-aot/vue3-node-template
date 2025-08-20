@@ -4,14 +4,16 @@ services:
   db:
     image: postgres:16-alpine
     container_name: app-db
+    env_file:
+      - ./.env
     environment:
-      - POSTGRES_DB=${POSTGRES_DB:-appdb}
-      - POSTGRES_USER=${POSTGRES_USER:-appuser}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-apppass}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "${POSTGRES_HOST_PORT:-5432}:5432"
 
   backend:
     build:
@@ -20,12 +22,14 @@ services:
     container_name: app-backend
     depends_on:
       - db
+    env_file:
+      - ./.env
     environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - DATABASE_URL=${DATABASE_URL:-postgresql://appuser:apppass@db:5432/appdb}
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${BACKEND_HTTP_PORT:-3000}
+      - DATABASE_URL=${DATABASE_URL}
     ports:
-      - "3000:3000"
+      - "${BACKEND_HTTP_PORT:-3000}:3000"
     restart: unless-stopped
 
   frontend:
@@ -35,10 +39,12 @@ services:
     container_name: app-frontend
     depends_on:
       - backend
+    env_file:
+      - ./.env
     environment:
-      - VITE_API_BASE_URL=${VITE_API_BASE_URL:-http://backend:3000}
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
     ports:
-      - "8080:80"
+      - "${FRONTEND_HTTP_PORT:-8080}:80"
     restart: unless-stopped
 
 volumes:
