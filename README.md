@@ -57,5 +57,9 @@ Open (local):
   - Backend: http://localhost:${BACKEND_HTTP_PORT:-3000}
   - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/docs
 
+Notes:
+- Frontend container is built with `VITE_API_BASE_URL` passed at build time and also available at runtime.
+- Nginx is configured with SPA fallback to `index.html`.
+
 # vue3-node-template
 Vue 3 and Node template
