@@ -1,0 +1,31 @@
+{
+  "name": "vue3-node-pro-template",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "build": "npm run -ws build",
+    "dev": "npm run -ws dev",
+    "lint": "npm run -ws lint",
+    "format": "npm run -ws format",
+    "test": "npm run -ws test",
+    "typecheck": "npm run -ws typecheck",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.9"
+  },
+  "lint-staged": {
+    "**/*.{ts,vue,js,jsx,tsx,css,scss,md,json,yaml,yml}": [
+      "prettier --write"
+    ],
+    "**/*.{ts,vue,js,jsx,tsx}": [
+      "eslint --fix"
+    ]
+  }
+}
+
