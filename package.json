@@ -13,11 +13,15 @@
     "format": "npm run -ws format",
     "test": "npm run -ws test",
     "typecheck": "npm run -ws typecheck",
-    "prepare": "husky install"
+    "prepare": "husky || true"
   },
   "devDependencies": {
     "husky": "^9.1.6",
     "lint-staged": "^15.2.9"
+  },
+  "overrides": {
+    "glob": "^10",
+    "rimraf": "^5"
   },
   "lint-staged": {
     "**/*.{ts,vue,js,jsx,tsx,css,scss,md,json,yaml,yml}": [
