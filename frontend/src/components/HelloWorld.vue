@@ -16,8 +16,7 @@ const apiMessage = ref('');
 
 onMounted(async () => {
   try {
-    const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${base}/health`);
+    const res = await fetch(`/api/health`);
     if (res.ok) {
       const data = await res.json();
       apiMessage.value = data.status;
