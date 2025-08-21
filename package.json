@@ -13,7 +13,7 @@
     "format": "npm run -ws format",
     "test": "npm run -ws test",
     "typecheck": "npm run -ws typecheck",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "devDependencies": {
     "husky": "^9.1.6",
