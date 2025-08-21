@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { getHealth } from '../services/api';
 
 defineProps<{ msg: string }>();
 
@@ -16,14 +17,9 @@ const apiMessage = ref('');
 
 onMounted(async () => {
   try {
-    const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${base}/health`);
-    if (res.ok) {
-      const data = await res.json();
-      apiMessage.value = data.status;
-    }
+    const data = await getHealth();
+    apiMessage.value = data.status;
   } catch (error) {
-    // Fallback silently, but ensure non-empty catch for lint rules
     console.error('Failed to fetch health', error);
   }
 });
