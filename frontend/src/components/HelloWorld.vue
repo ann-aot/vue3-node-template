@@ -1,8 +1,15 @@
 <template>
   <section>
     <h2>{{ msg }}</h2>
-    <button class="btn" @click="count++">Count: {{ count }}</button>
-    <p v-if="apiMessage">API: {{ apiMessage }}</p>
+    <button
+      class="btn"
+      @click="count++"
+    >
+      Count: {{ count }}
+    </button>
+    <p v-if="apiMessage">
+      API: {{ apiMessage }}
+    </p>
   </section>
 </template>
 

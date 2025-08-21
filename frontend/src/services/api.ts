@@ -14,4 +14,3 @@ export async function getHealth(): Promise<{ status: string }> {
   }
   return res.json();
 }
-
