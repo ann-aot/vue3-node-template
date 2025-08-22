@@ -44,6 +44,18 @@ Open (local):
 - Backend: http://localhost:${BACKEND_PORT:-3000}
 - Swagger UI: http://localhost:${BACKEND_PORT:-3000}/docs
 
+## Development
+
+Before running or committing code, make sure your files are properly formatted. You can fix the linting issue as below:
+
+```bash
+# Format all files
+npm run -ws lint -- --fix
+
+or 
+
+- `npm run --workspace frontend/backend lint -- --fix`
+
 ## Scripts
 
 - `npm run -ws build|dev|lint|format|test|typecheck` runs across workspaces.
@@ -58,5 +70,6 @@ Open (local):
   - Swagger UI: http://localhost:${BACKEND_HTTP_PORT:-3000}/docs
 
 Notes:
+
 - Frontend container is built with `VITE_API_BASE_URL` passed at build time and also available at runtime.
 - Nginx is configured with SPA fallback to `index.html`.

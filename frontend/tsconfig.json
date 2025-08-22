@@ -12,8 +12,12 @@
       "vite/client",
       "node",
       "vitest/globals"
-    ],
+    ]
   },
+  "typeRoots": [
+    "./src/types",
+    "./node_modules/@types"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",

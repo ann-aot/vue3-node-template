@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
+import path from 'node:path';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -11,6 +12,8 @@ export default tseslint.config(
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
+        project: ['./tsconfig.json', './tsconfig.tests.json'],
+        tsconfigRootDir: path.resolve('./'),
       },
     },
     files: ['**/*.ts'],
