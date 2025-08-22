@@ -51,11 +51,13 @@ Before running or committing code, make sure your files are properly formatted. 
 ```bash
 # Format all files
 npm run -ws lint -- --fix
-
+```
 or 
 
+```bash
 - `npm run --workspace frontend/backend lint -- --fix`
-
+```
+```bash
 ## Scripts
 
 - `npm run -ws build|dev|lint|format|test|typecheck` runs across workspaces.
