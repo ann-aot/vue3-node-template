@@ -13,11 +13,14 @@
     "format": "npm run -ws format",
     "test": "npm run -ws test",
     "typecheck": "npm run -ws typecheck",
-    "prepare": "husky || true"
+    "prepare": "husky"
   },
   "devDependencies": {
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.9"
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "@typescript-eslint/parser": "^8.40.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "overrides": {
     "glob": "^10",
@@ -32,4 +35,3 @@
     ]
   }
 }
-

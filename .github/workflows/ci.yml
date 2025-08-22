@@ -2,26 +2,38 @@ name: CI
 
 on:
   push:
-    branches: [ main, v0.0.0 ]
+    branches: [main, v0.0.0]
   pull_request:
-    branches: [ main, v0.0.0 ]
+    branches: [main, v0.0.0]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
+
+      # Clean node_modules and package-lock.json to avoid Rollup native module issues
+      - name: Clean workspace
+        run: |
+          rm -rf node_modules package-lock.json
+
+      # Install dependencies (force rebuild optional deps)
+      - name: Install dependencies
+        run: npm install --force
+
       - name: Lint
         run: npm run -ws lint
+
       - name: Typecheck
         run: npm run -ws typecheck
+
       - name: Build
         run: npm run -ws build
+
       - name: Test
         run: npm run -ws test
-

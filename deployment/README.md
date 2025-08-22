@@ -28,4 +28,4 @@ Environment variables (with defaults):
 - POSTGRES_USER (default: appuser)
 - POSTGRES_PASSWORD (default: apppass)
 - DATABASE_URL (default: postgresql://appuser:apppass@db:5432/appdb)
-- VITE_API_BASE_URL (default: http://backend:3000)
+- VITE_API_BASE_URL (default: http://localhost:3000)

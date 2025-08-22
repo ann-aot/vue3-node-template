@@ -11,7 +11,6 @@ import { ref, onMounted } from 'vue';
 import { getHealth } from '../services/api';
 
 defineProps<{ msg: string }>();
-
 const count = ref(0);
 const apiMessage = ref('');
 
