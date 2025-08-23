@@ -24,7 +24,7 @@
   },
   "overrides": {
     "glob": "^10",
-    "rimraf": "^5"
+    "rimraf": "3.0.2"
   },
   "lint-staged": {
     "**/*.{ts,vue,js,jsx,tsx,css,scss,md,json,yaml,yml}": [
