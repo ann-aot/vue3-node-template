@@ -8,15 +8,23 @@ tasks:
       rm -rf node_modules frontend/node_modules package-lock.json
       npm cache clean --force
       npm install
-    command: npm run -ws dev
+    command: |
+      # Start backend in the background
+      npm run --workspace backend dev &
+      # Wait a few seconds to ensure backend starts
+      sleep 5
+      # Set the API base URL for frontend
+      export VITE_API_BASE_URL=$(gp url 3000)
+      # Start frontend dev server
+      npm run --workspace frontend dev
 
 ports:
   - port: 5173
     onOpen: open-preview
   - port: 3000
-    onOpen: open-preview
+    onOpen: notify
   - port: 8080
-    onOpen: open-preview
+    onOpen: notify
 
 vscode:
   extensions:
