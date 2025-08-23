@@ -4,13 +4,9 @@ image:
 tasks:
   - name: Install dependencies and build
     init: |
-      # Ensure clean install
       rm -rf node_modules package-lock.json
-      # Use npm 11 (Dockerfile already installs it)
       npm install
-      # Install sass explicitly for frontend
       cd frontend && npm install -D sass && cd ..
-      # Build all workspaces
       npm run -ws build
     command: npm run -ws dev
 
