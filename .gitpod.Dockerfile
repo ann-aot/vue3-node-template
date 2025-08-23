@@ -1,8 +1,16 @@
 FROM gitpod/workspace-full:latest
 
-USER gitpod
+USER root
 
-RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+# Install PostgreSQL client + Node 20 + npm 11
+RUN apt-get update && apt-get install -y --no-install-recommends \
     postgresql-client \
- && sudo rm -rf /var/lib/apt/lists/*
+ && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+ && apt-get install -y nodejs \
+ && npm install -g npm@11 \
+ && rm -rf /var/lib/apt/lists/*
 
+ # Fix npm cache ownership
+RUN chown -R gitpod:gitpod /home/gitpod/.npm
+
+USER gitpod
