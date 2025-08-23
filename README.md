@@ -50,7 +50,7 @@ Before running or committing code, make sure your files are properly formatted. 
 
 ```bash
 # Format all files
-npm run -ws lint -- --fix
+npm run lint -- --fix
 ```
 or 
 
