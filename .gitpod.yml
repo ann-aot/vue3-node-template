@@ -3,11 +3,11 @@ image:
 
 tasks:
   - name: Install dependencies and build
-    init: |
-      rm -rf node_modules package-lock.json
+    tasks:
+  - init: |
+      rm -rf node_modules frontend/node_modules package-lock.json
+      npm cache clean --force
       npm install
-      cd frontend && npm install -D sass && cd ..
-      npm run -ws build
     command: npm run -ws dev
 
 ports:
