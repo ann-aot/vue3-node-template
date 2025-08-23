@@ -3,7 +3,6 @@ image:
 
 tasks:
   - name: Install dependencies and build
-    tasks:
   - init: |
       rm -rf node_modules frontend/node_modules package-lock.json
       npm cache clean --force
