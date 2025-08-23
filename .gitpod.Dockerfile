@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     postgresql-client \
  && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
  && apt-get install -y nodejs \
- && npm install -g npm@11 \
+ && npm install -g npm@11 ts-node-dev@1.1.8 \
  && rm -rf /var/lib/apt/lists/*
 
  # Fix npm cache ownership
