@@ -10,15 +10,25 @@ import { router as exampleRouter } from './routes/example';
 const app = express();
 
 app.use(helmet());
+
+const allowedOrigins = [
+  /^https:\/\/[0-9]+-.*\.ws-us121\.gitpod\.io$/, // match all Gitpod preview URLs
+  'http://localhost:5173',
+];
+
 app.use(
   cors({
-    origin: [
-      /\.gitpod\.io$/, // allow any subdomain of gitpod.io
-      'http://localhost:5173', // optional: for local testing
-    ],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // Postman, curl
+      if (allowedOrigins.some((o) => (o instanceof RegExp ? o.test(origin) : o === origin))) {
+        return callback(null, true);
+      }
+      callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
   }),
 );
+
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -34,8 +44,8 @@ app.use((req, res) => {
 
 const port = Number(process.env.PORT || 3000);
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(port, () => {
-    console.log(`Server listening on http://localhost:${port}`);
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`Server listening on http://0.0.0.0:${port}`);
   });
 }
 

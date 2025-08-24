@@ -20,7 +20,9 @@
     "@typescript-eslint/parser": "^8.40.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
-    "vite-plugin-eslint": "^1.8.1"
+    "vite-plugin-eslint": "^1.8.1",
+  "rollup": "^4.43.0",
+  "esbuild": "^0.25.0"
   },
   "overrides": {
     "glob": "^10",
