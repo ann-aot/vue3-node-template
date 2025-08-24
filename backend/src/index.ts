@@ -11,20 +11,12 @@ const app = express();
 
 app.use(helmet());
 
-const allowedOrigins = [
-  /^https:\/\/[0-9]+-.*\.ws-us121\.gitpod\.io$/, // match all Gitpod preview URLs
-  'http://localhost:5173',
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // Postman, curl
-      if (allowedOrigins.some((o) => (o instanceof RegExp ? o.test(origin) : o === origin))) {
-        return callback(null, true);
-      }
-      callback(new Error('Not allowed by CORS'));
-    },
+    origin: [
+      /\.gitpod\.io$/, // allow any subdomain of gitpod.io
+      'http://localhost:5173', // optional: for local testing
+    ],
     credentials: true,
   }),
 );
